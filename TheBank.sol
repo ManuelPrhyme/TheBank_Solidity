@@ -32,9 +32,11 @@ contract TheBank {
     function OwnerFunction()external view returns(address){
         return Owner;
     }
-    // Calculates the amount of Celo to Deduct and return wat to send to the recepient
+    
     function toSend(uint256 receivedAmount) internal pure returns (uint256) {
-            uint256 Rate = (receivedAmount * 3) / 100;
+//Since solidity doesn't operate with decimals, getting the percentage, by (3/100) will result in 0.03 which will truncate to 0. The only approach is (AmountReceived *3) /100, 
+//which is mathematically just the same. 
+            uint256 Rate = (receivedAmount * 3) / 100; //That will always get us 3%
             uint256 ToSend = receivedAmount-Rate;
             return ToSend;
     }
@@ -42,7 +44,7 @@ contract TheBank {
 
      function receiveCelo(address payable recepient) external payable {
             uint Value = msg.value;
-            (bool Status,)= payable(address(this)).call{value:msg.value}("");
+            (bool Status,)= payable(address(this)).call{value:msg.value}(""); //This is the same as the transfer function used in the 'withdraw' function
             uint AmountToSend = toSend(Value);
               (bool Success,)=recepient.call{value:AmountToSend}("");
 
