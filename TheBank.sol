@@ -44,13 +44,19 @@ contract TheBank {
 
      function receiveCelo(address payable recepient) external payable {
             uint Value = msg.value;
-            (bool Status,)= payable(address(this)).call{value:msg.value}(""); //This is the same as the transfer function used in the 'withdraw' function
+            (bool Status,)= payable(address(this)).call{value:msg.value}(""); //This is the same as the transfer method used on the 'withdraw' function
             uint AmountToSend = toSend(Value);
               (bool Success,)=recepient.call{value:AmountToSend}("");
 
     }
 
+
+//msg.sender - This will always be the user address / contract address that externally calls a particular function
+//msg.value  - Is the amount of native currency that is transffered along with a function call, and it needs to be handles by a function
+//To preempt any kind of attack, this function is restricted to only the deploying address, for its execution
+
     function withdraw()external payable{
+        require(msg.sender == Owner,"Unauthorized")
         Owner.transfer(address(this).balance);
 
     }
