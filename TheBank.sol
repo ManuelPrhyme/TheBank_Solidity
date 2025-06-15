@@ -23,7 +23,7 @@ pragma solidity ^0.8.25;
 contract TheBank {
 
     uint256 public Received;
-    address payable Owner;
+    address immutable payable Owner;
 
     constructor(){
         Owner = payable(msg.sender);
