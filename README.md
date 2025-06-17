@@ -1,6 +1,12 @@
-# TheBank_Solidity
-The bank is a Solidity contract that transfers native currencies to from the connected address to the designated address, deducting 3% as a charge from every transaction. This percentage charge in wei, remains on the contract and can only be withdrawn by the deployig address of the contract
+# React + Vite
 
-## How it works
-The tokens are transferred from the user account onto the smart contract, the contract deducts the 3% charge and then sends the balance to the user designated account.
-The deducted tokens remain on the smart contract and are only withdrawable by the contract's deploying address.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
